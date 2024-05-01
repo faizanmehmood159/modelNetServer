@@ -2,26 +2,18 @@
 
 import bcrypt from 'bcryptjs';
 import User from '../../models/user.js';
-import nodemailer from 'nodemailer'; 
-import { generateOTP, sendOTP } from '../../utils/otpUtils.js'; // Import OTP utility function
+import { generateOTP, sendOTP } from '../../utils/otpUtils.js'; 
 import sendFinalResponse from '../../utils/sendFinalResponse.js';
 
-// Function to handle the password reset process
+
 const resetPassword = async (req, res, next) => {
   try {
     const { email, otp, newPassword } = req.body;
 
-    // Check if the user with the provided email exists
     const user = await User.findOne({ email });
     if (!user) {
       return sendFinalResponse(res, 400, false, 'User not found');
     }
-
-    // Validate OTP (optional)
-    // Here you can add a validation step to verify the OTP sent to the user
-    // For simplicity, we'll skip this step in this example
-
-    // Update user's password
     user.password = await bcrypt.hash(newPassword, 12);
     await user.save();
 
@@ -32,21 +24,17 @@ const resetPassword = async (req, res, next) => {
   }
 };
 
-// Function to send OTP for password reset
 const sendOTPForReset = async (req, res, next) => {
   try {
     const { email } = req.body;
 
-    // Check if the user with the provided email exists
     const user = await User.findOne({ email });
     if (!user) {
       return sendFinalResponse(res, 400, false, 'User not found');
     }
 
-    // Generate OTP
     const otp = generateOTP();
 
-    // Send OTP to user's email
     await sendOTP(email, otp);
 
     return sendFinalResponse(res, 200, true, 'OTP sent successfully');
@@ -56,5 +44,5 @@ const sendOTPForReset = async (req, res, next) => {
   }
 };
 
-export default resetPassword; // Export resetPassword as default
+export default resetPassword; 
 export { sendOTPForReset };

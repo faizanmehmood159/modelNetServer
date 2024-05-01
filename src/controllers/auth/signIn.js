@@ -51,6 +51,7 @@ const signIn = async (req, res, next) => {
       email: user.email,
       name: user.name,
       id: user._id,
+      image: user.image
     });
   } catch (error) {
     console.error("Signin Error:", error);

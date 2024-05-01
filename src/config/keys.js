@@ -5,7 +5,7 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 dotenv.config({ path: "./.env.local" });
 
 const config = {
-  PORT: process.env.PORT || 4000,
+  PORT: process.env.PORT || 8000,
   DATABASE: {
     URL: process.env.MONGODB_URL,
   },

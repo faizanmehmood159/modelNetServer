@@ -1,15 +1,14 @@
-//E:\React Native\Fyp\modelNetServer\src\controllers\complaint.js
+// src/controllers/complaint.js
 
-import Complaint from "../models/complaint.js";
+import Complaint from "../models/complaint.js"; // Ensure correct path to complaint model
+import sendFinalResponse from "../utils/sendFinalResponse.js";
 
-// Controller function to save a complaint
-export const saveComplaint = async (req, res, next) => {
+const registerComplaint = async (req, res, next) => {
   try {
-    const { id, name, email, phone_no, complaint } = req.body;
+    const { name, email, phone_no, complaint } = req.body;
 
-    // Create a new complaint object
+    // Create a new Complaint document
     const newComplaint = new Complaint({
-      id,
       name,
       email,
       phone_no,
@@ -17,16 +16,13 @@ export const saveComplaint = async (req, res, next) => {
     });
 
     // Save the complaint to the database
-    const savedComplaint = await newComplaint.save();
+    await newComplaint.save();
 
-    // Respond with success message
-    res.status(201).json({
-      success: true,
-      message: "Complaint registered successfully",
-      complaint: savedComplaint,
-    });
+    return sendFinalResponse(res, 201, true, "Complaint registered successfully", { complaint: newComplaint });
   } catch (error) {
-    // Pass error to error handling middleware
+    console.error("Error registering complaint:", error);
     next(error);
   }
 };
+
+export default registerComplaint;

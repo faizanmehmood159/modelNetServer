@@ -3,10 +3,7 @@
 import mongoose from "mongoose";
 
 const complaintSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-  },
+  
   name: {
     type: String,
     required: true,
@@ -22,6 +19,9 @@ const complaintSchema = new mongoose.Schema({
   complaint: {
     type: String,
     required: true,
+  },
+  createdAt: { 
+    type: Date, default: Date.now 
   },
 });
 

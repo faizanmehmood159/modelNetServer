@@ -1,32 +1,30 @@
 // src/controllers/installationForm.js
-
 import Installation from '../models/installation.js';
 
-const submitInstallationForm = async (req, res) => {
+const installationForm = async (req, res) => {
   try {
+    // Extract data from request body
     const { name, email, phone_no, cnic, address } = req.body;
 
-    // Assuming User model is imported somewhere else
-    const existingUser = await User.findOne({ email });
-    if (!existingUser) {
-      return res.status(400).json({ success: false, message: 'User not found with provided email' });
-    }
-
+    // Create a new Installation instance
     const installation = new Installation({
       name,
-      email: existingUser.email,
-      phone_no: existingUser.phone_no,
+      email,
+      phone_no,
       cnic,
       address
     });
 
+    // Save the installation data to the database
     await installation.save();
 
+    // Send a success response
     return res.status(201).json({ success: true, message: 'Installation form submitted successfully' });
   } catch (error) {
+    // Log and send a generic internal server error response in case of any error
     console.error('Error submitting installation form:', error);
     return res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };
 
-export default submitInstallationForm;
+export default installationForm;

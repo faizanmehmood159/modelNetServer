@@ -3,7 +3,7 @@
 import express from "express";
 import auth from "./auth.js";
 import complaint from "./complaint.js";
-import installationForm from "../models/installationForm.js";
+import installationForm from "../controllers/installationForm.js";
 const router = express.Router();
 import { imageUpload } from "../middleware/imageUpload.js";
 

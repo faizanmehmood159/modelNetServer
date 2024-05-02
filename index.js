@@ -4,11 +4,9 @@
   import DB from "./src/config/db.js";
   import AppRoutes from "./src/routes/index.js";
   import errorHandler from "./src/utils/Errorhandler.js";
-  import userRoutes from './src/routes/userRoutes.js';
 
 
   app.use("/api/v1/", AppRoutes);
-  app.use('/api/user', userRoutes);
   
   
   // error handler

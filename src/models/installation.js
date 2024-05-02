@@ -22,7 +22,12 @@ const installationSchema = new mongoose.Schema({
   address: {
     type: String,
     required: true
-  }
+  },
+  status: {
+    type: String,
+    default: "pending",
+  },
+  
 }, { timestamps: true });
 
 const Installation = mongoose.model('Installation', installationSchema);

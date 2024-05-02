@@ -1,12 +1,10 @@
 // src/routes/complaint.js
 
 import express from "express";
-import registerComplaint from "../controllers/complaint.js";
-import tokenAuthorization from '../middleware/tokenAuthorization.js'; // Import authentication middleware if needed
+import { saveComplaint } from "../controllers/complaint.js";
 
 const router = express.Router();
 
-// Route for registering a complaint
-router.post("/", tokenAuthorization, registerComplaint);
+router.post("/", saveComplaint);
 
 export default router;

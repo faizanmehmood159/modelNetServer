@@ -20,6 +20,11 @@ const complaintSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: "pending",
+  },
+  
   createdAt: { 
     type: Date, default: Date.now 
   },

@@ -20,7 +20,7 @@ class HTTP500Error extends BaseError {
     }
 }
 
-export {
+export  {
     ApiError,
     HTTP404Error,
     HTTP500Error,

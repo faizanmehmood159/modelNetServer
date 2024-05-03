@@ -7,8 +7,7 @@
 
 
   app.use("/api/v1/", AppRoutes);
-  
-  
+    
   // error handler
   app.use((err, req, res, next) => {
     console.error(err.stack);

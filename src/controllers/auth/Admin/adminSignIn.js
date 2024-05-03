@@ -1,5 +1,7 @@
 // src/controllers/auth/Admin/adminSignIn.js
 
+import { ApiError } from "../../../utils/apiErrors";
+
 const adminSignIn = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -23,10 +25,10 @@ const adminSignIn = async (req, res, next) => {
                 email: email,
             },
         });
-    } catch (error) {
+    }  catch (error) {
         console.error("Admin Signin Error:", error);
         next(error);
-    }
 };
 
-export default adminSignIn;
+}
+export default adminSignIn

@@ -27,8 +27,11 @@
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.13",
     "nodemon": "^3.1.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
     "react-native-image-picker": "^7.1.2",
     "start": "^5.1.0",
+    "uuid": "^9.0.1",
     "validator": "^13.11.0"
   }
 }

@@ -7,6 +7,10 @@ import forgotPassword from '../controllers/auth/forgotPassword .js';
 import resetPassword from '../controllers/auth/resetPassword.js';
 import { sendOTPForReset } from '../controllers/auth/resetPassword.js';
 import adminSignIn from '../controllers/auth/Admin/adminSignIn.js';
+import  tokenAuthorization  from "../middleware/tokenAuthorization.js";
+import stats from "../controllers/auth/Admin/stats.js";
+import installationForm from "../controllers/installationForm.js";
+
 
 
 const router = express.Router();
@@ -18,6 +22,10 @@ router.post("/adminSignIn", adminSignIn);
 router.post('/forgotPassword', forgotPassword);
 router.post('/resetPassword', resetPassword);
 router.post("/sendOTPForReset", sendOTPForReset);
+router.get("/stats", stats);
+router.use("/installationForm",tokenAuthorization, installationForm);
+
+
 
 
 export default router;

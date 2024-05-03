@@ -1,8 +1,14 @@
 // src/models/installation.js
 
 import mongoose from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
 
 const installationSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Reference to the User model
+    required: true
+  },
   name: {
     type: String,
     required: true

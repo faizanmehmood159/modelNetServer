@@ -1,14 +1,16 @@
-// src/controllers/complaint.js
-
 import Complaint from "../models/complaint.js"; // Ensure correct path to complaint model
 import sendFinalResponse from "../utils/sendFinalResponse.js";
 
 const registerComplaint = async (req, res, next) => {
   try {
-    const { name, email, phone_no, complaint } = req.body;
+    // Extract user details from authenticated request
+    const { _id: userId, name, email } = req.user;
 
-    // Create a new Complaint document
+    const { phone_no, complaint } = req.body;
+
+    // Create a new Complaint document with user ID
     const newComplaint = new Complaint({
+      userId, // Include user ID in the complaint data
       name,
       email,
       phone_no,
@@ -18,7 +20,11 @@ const registerComplaint = async (req, res, next) => {
     // Save the complaint to the database
     await newComplaint.save();
 
-    return sendFinalResponse(res, 201, true, "Complaint registered successfully", { complaint: newComplaint });
+    // Include the logged-in user details in the response
+    return sendFinalResponse(res, 201, true, "Complaint registered successfully", { 
+      complaint: newComplaint,
+      user: req.user // Include logged-in user details in the response
+    });
   } catch (error) {
     console.error("Error registering complaint:", error);
     next(error);

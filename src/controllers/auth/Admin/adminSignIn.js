@@ -1,6 +1,6 @@
 // src/controllers/auth/Admin/adminSignIn.js
 
-import { ApiError } from "../../../utils/apiErrors";
+// import { ApiError } from "../../../utils/apiErrors";
 
 const adminSignIn = async (req, res, next) => {
     try {

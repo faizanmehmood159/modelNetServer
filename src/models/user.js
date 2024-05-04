@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
   {
     userId:{
       type: String,
-      required: true,
+      required: false,
       unique: true,
     },
     
@@ -35,10 +35,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
-      type: String, // Store base64 string here
-      required: false // This field is not mandatory
-    }
+    // image: {
+    //   type: String, // Store base64 string here
+    //    // This field is not mandatory
+    // }
   },
   
   {

@@ -8,7 +8,7 @@ import { EMAIL_REGEX } from "../../constants/regex.js";
 
 const signUp = async (req, res, next) => {
     try {
-        const { name, password, email, phone_no, image  } = req.body;
+        const { name, password, email, phone_no,  } = req.body;
 
         if (!name || !password  || !email || !phone_no) {
             throw new ApiError("Invalid Details", 400, "All fields are required", true);
@@ -33,9 +33,9 @@ const signUp = async (req, res, next) => {
         const newUser = new User({
             name,
             email: normalizedEmail,
-            password,
             phone_no,
-            image,
+            password,
+            // image,
            
         });
 

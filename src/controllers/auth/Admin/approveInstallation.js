@@ -3,7 +3,6 @@ import sendFinalResponse from "../../../utils/sendFinalResponse.js";
 import { ApiError } from "../../../utils/apiErrors.js";
 // import sendEmail from "../../../utils/sendEmail.js";
 
-
 const approveInstallation = async (req, res, next) => {
   try {
     const { installationFormId, status } = req.query;
@@ -17,12 +16,23 @@ const approveInstallation = async (req, res, next) => {
       );
     }
 
-    // Find the installation form by ID and update its status
-    const updatedForm = await Installation.findByIdAndUpdate(installationFormId, {
-      $set: {
-        status: status === "approved" ? "approved" : status === "delete" ? "delete" : "pending",
-      },
-    });
+    let updatedForm;
+
+    if (status === "reject") {
+      // Update the status of the installation form to "rejected"
+      updatedForm = await Installation.findByIdAndUpdate(installationFormId, {
+        $set: {
+          status: "rejected",
+        },
+      });
+    } else {
+      // Update the status of the installation form
+      updatedForm = await Installation.findByIdAndUpdate(installationFormId, {
+        $set: {
+          status: status === "approved" ? "approved" : "pending",
+        },
+      });
+    }
 
     if (!updatedForm) {
       throw new ApiError(
@@ -32,22 +42,21 @@ const approveInstallation = async (req, res, next) => {
         true
       );
     }
-     // Notify the user about the status update via email
+
+    // Notify the user about the status update via email
     // const emailSubject = status === "approved" ? "Installation Form Approved" :
-    //                     status === "delete" ? "Installation Form Deleted" : "Installation Form Pending";
-    // const emailMessage = `Your installation form with ID ${formId} has been ${status}.`;
+    //                     status === "reject" ? "Installation Form Rejected" : "Installation Form Pending";
+    // const emailMessage = `Your installation form with ID ${installationFormId} has been ${status === "reject" ? "rejected" : status}.`;
 
     // // Assuming updatedForm contains user's email address
     // await sendEmail(updatedForm.email, emailSubject, emailMessage);
-
-    // Send a success response
 
     // Send a success response
     sendFinalResponse(
       res,
       200,
       true,
-      "Installation form status updated successfully"
+      `Installation form ${status === "reject" ? "rejected" : "status updated"} successfully`
     );
   } catch (error) {
     next(error);

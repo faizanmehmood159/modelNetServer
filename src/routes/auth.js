@@ -13,6 +13,8 @@ import registerComplaint from "../controllers/complaint.js";
 import installationForm from "../controllers/installationForm.js";
 import resolveComplaint from "../controllers/auth/Admin/resolveComplaint.js";
 import approveInstallation from "../controllers/auth/Admin/approveInstallation.js";
+import deleteUser from "../controllers/auth/Admin/deleteUser.js";
+import changePassword from "../controllers/auth/changePassword.js";
 
 
 
@@ -24,12 +26,14 @@ router.post("/signIn", signIn);
 router.post("/adminSignIn", adminSignIn);
 router.post('/forgotPassword', forgotPassword);
 router.post('/resetPassword', resetPassword);
+router.post("/changePassword", changePassword)
 router.post("/sendOTPForReset", sendOTPForReset);
 router.get("/stats", stats);
 router.use("/installationForm",tokenAutorization , installationForm);
 router.use("/registerComplaint", tokenAutorization, registerComplaint);
 router.use("/resolveComplaint", resolveComplaint)
 router.use("/approveInstallation", approveInstallation )
+router.use("/deleteUser ", deleteUser)
 
 
 

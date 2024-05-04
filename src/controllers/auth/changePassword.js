@@ -4,9 +4,7 @@ import sendFinalResponse from "../../utils/sendFinalResponse.js";
 import { ApiError } from "../../utils/apiErrors.js";
 import passwordValidation from "../../utils/passwordValidation.js";
 
-
 const changePassword = async (req, res, next) => {
-
     try {
         let { oldPassword, newPassword, confirmNewPassword } = req.body;
 
@@ -58,12 +56,13 @@ const changePassword = async (req, res, next) => {
             throw new ApiError("Invalid Details", 400, "Failed to update password", true);
         }
 
+        // Send success response if password is updated successfully
         return sendFinalResponse(res, 200, true, "Password updated successfully");
 
     } catch (error) {
+        // Pass any errors to the next middleware
         next(error);
     }
-
 };
 
 export default changePassword;

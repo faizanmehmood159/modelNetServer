@@ -19,14 +19,13 @@ import editUser from "../controllers/auth/Admin/editUser.js";
 import changeName from "../controllers/auth/changeName.js";
 import speed from "../controllers/auth/speedTest.js"
 import multer from "multer";
-
-
+import getLoggedInUserName from "../controllers/auth/getLoggedInUserName.js";
+import uploadProfilePicture from "../controllers/auth/uploadProfilePicture.js";
 
 
 
 const router = express.Router();
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
 
 
 router.post("/signup", signUp);
@@ -44,7 +43,9 @@ router.use("/resolveComplaint", resolveComplaint)
 router.use("/approveInstallation", approveInstallation )
 router.post("/deleteUser", deleteUser)
 router.put("/editUser", editUser)
-app.post('/profile', profileRoutes);
+router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName)
+router.post("/uploadProfilePicture", tokenAuthorization, upload.single("image"), uploadProfilePicture);
+
 
 
 export default router;

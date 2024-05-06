@@ -35,6 +35,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    profile: {
+      type: String,
+      default: "pending",
+    },
     // image: {
     //   type: String, // Store base64 string here
     //    // This field is not mandatory

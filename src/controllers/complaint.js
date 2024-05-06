@@ -4,9 +4,9 @@ import sendFinalResponse from "../utils/sendFinalResponse.js";
 const registerComplaint = async (req, res, next) => {
   try {
     // Extract user details from authenticated request
-    const { _id: userId, name, email } = req.user;
+    const { _id: userId} = req.user;
 
-    const { phone_no, complaint } = req.body;
+    const { name, email,phone_no, complaint } = req.body;
 
     // Create a new Complaint document with user ID
     const newComplaint = new Complaint({

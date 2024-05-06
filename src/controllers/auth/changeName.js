@@ -1,11 +1,11 @@
 // controllers/auth/changeName.js
-import User from '../../models/user.js';
+// import user from '../../models/user.js';
 import sendFinalResponse from '../../utils/sendFinalResponse.js';
 import { ApiError } from '../../utils/apiErrors.js';
 
 const changeName = async (req, res, next) => {
     try {
-        const { newName } = req.query;
+        const { newName } = req.body;
         if (!newName) {
             throw new ApiError('Invalid Request', 400, 'New name is required');
         }

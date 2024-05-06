@@ -17,10 +17,16 @@ import deleteUser from "../controllers/auth/Admin/deleteUser.js";
 import changePassword from "../controllers/auth/changePassword.js";
 import editUser from "../controllers/auth/Admin/editUser.js";
 import changeName from "../controllers/auth/changeName.js";
+import speed from "../controllers/auth/speedTest.js"
+import multer from "multer";
+
+
 
 
 
 const router = express.Router();
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 
 router.post("/signup", signUp);
@@ -38,10 +44,7 @@ router.use("/resolveComplaint", resolveComplaint)
 router.use("/approveInstallation", approveInstallation )
 router.post("/deleteUser", deleteUser)
 router.put("/editUser", editUser)
-
-
-
-
+app.post('/profile', profileRoutes);
 
 
 export default router;

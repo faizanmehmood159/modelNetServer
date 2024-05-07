@@ -3,7 +3,6 @@
 import express from "express";
 import signUp from "../controllers/auth/signUp.js";
 import signIn from "../controllers/auth/signIn.js";
-import forgotPassword from '../controllers/auth/forgotPassword .js';
 import resetPassword from '../controllers/auth/resetPassword.js';
 import { sendOTPForReset } from '../controllers/auth/resetPassword.js';
 import adminSignIn from '../controllers/auth/Admin/adminSignIn.js';
@@ -20,6 +19,8 @@ import changeName from "../controllers/auth/changeName.js";
 import multer from "multer";
 import getLoggedInUserName from '../controllers/auth/getLoggedInUserName.js'
 import  upload  from '../controllers/auth/uploadProdile.js';
+import forgetPassword from "../controllers/auth/forgetPassword.js";
+import sendOtp from "../controllers/auth/sendOtp.js";
 
 
 
@@ -31,7 +32,7 @@ const router = express.Router();
 router.post("/signup", signUp);
 router.post("/signIn", signIn);
 router.post("/adminSignIn", adminSignIn);
-router.post('/forgotPassword', forgotPassword);
+router.post("/forgetPassword", forgetPassword);
 router.post('/resetPassword', resetPassword);
 router.post("/changePassword", tokenAuthorization, changePassword)
 router.patch('/changeName', tokenAuthorization, changeName);
@@ -45,6 +46,7 @@ router.post("/deleteUser", deleteUser)
 router.put("/editUser", editUser)
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName)
 router.post('/upload', upload);
+router.post("/sendOtp", sendOtp);
 
 
 

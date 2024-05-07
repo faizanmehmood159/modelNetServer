@@ -8,12 +8,12 @@ import ENV from "../config/keys.js";
 
 const userSchema = new mongoose.Schema(
   {
-    userId:{
+    userId: {
       type: String,
       required: false,
       unique: true,
     },
-    
+
     name: {
       type: String,
       required: true,
@@ -27,25 +27,29 @@ const userSchema = new mongoose.Schema(
         message: "Invalid email format",
       },
     },
-    phone_no: { 
+    phone_no: {
       type: String,
-      required: true 
+      required: true,
     },
     password: {
       type: String,
       required: true,
     },
 
+    otp: {
+      type: Number,
+    },
+
     profilePicture: {
       type: String,
-      default: "default.jpg" 
+      default: "default.jpg",
     },
     // image: {
     //   type: String, // Store base64 string here
     //    // This field is not mandatory
     // }
   },
-  
+
   {
     timestamps: true,
   }

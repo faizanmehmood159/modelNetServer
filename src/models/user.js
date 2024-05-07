@@ -36,9 +36,9 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
-    profile: {
+    profilePicture: {
       type: String,
-      default: "pending",
+      default: "default.jpg" 
     },
     // image: {
     //   type: String, // Store base64 string here

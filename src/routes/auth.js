@@ -1,4 +1,4 @@
-// src/routes/auth.js
+// E:\React Native\Fyp\modelNetServer\src\routes\auth.js
 
 import express from "express";
 import signUp from "../controllers/auth/signUp.js";
@@ -17,15 +17,15 @@ import deleteUser from "../controllers/auth/Admin/deleteUser.js";
 import changePassword from "../controllers/auth/changePassword.js";
 import editUser from "../controllers/auth/Admin/editUser.js";
 import changeName from "../controllers/auth/changeName.js";
-import speed from "../controllers/auth/speedTest.js"
 import multer from "multer";
-import getLoggedInUserName from "../controllers/auth/getLoggedInUserName.js";
-import uploadProfilePicture from "../controllers/auth/uploadProfilePicture.js";
+import getLoggedInUserName from '../controllers/auth/getLoggedInUserName.js'
+import  upload  from '../controllers/auth/uploadProdile.js';
+
 
 
 
 const router = express.Router();
-const storage = multer.memoryStorage();
+
 
 
 router.post("/signup", signUp);
@@ -44,7 +44,10 @@ router.use("/approveInstallation", approveInstallation )
 router.post("/deleteUser", deleteUser)
 router.put("/editUser", editUser)
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName)
-router.post("/uploadProfilePicture", tokenAuthorization, upload.single("image"), uploadProfilePicture);
+router.post('/upload', upload);
+
+
+
 
 
 

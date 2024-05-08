@@ -18,11 +18,10 @@ import editUser from "../controllers/auth/Admin/editUser.js";
 import changeName from "../controllers/auth/changeName.js";
 import multer from "multer";
 import getLoggedInUserName from '../controllers/auth/getLoggedInUserName.js'
-import  upload  from '../controllers/auth/uploadProdile.js';
 import forgetPassword from "../controllers/auth/forgetPassword.js";
 import sendOtp from "../controllers/auth/sendOtp.js";
 import processPayment from "../controllers/auth/paymentController.js";
-
+import imageController from '../controllers/auth/imageController.js';
 
 
 
@@ -46,10 +45,9 @@ router.use("/approveInstallation", approveInstallation )
 router.post("/deleteUser", deleteUser)
 router.put("/editUser", editUser)
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName)
-router.post('/upload', upload);
 router.post("/sendOtp", sendOtp);
 router.post('/payment', tokenAuthorization, processPayment);
-
+router.post('/upload', imageController.uploadImage);
 
 
 

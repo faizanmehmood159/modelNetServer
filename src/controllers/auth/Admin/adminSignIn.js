@@ -13,7 +13,7 @@ const adminSignIn = async (req, res, next) => {
         }
 
         
-        if (email !== "admin@example.com" || password !== "adminPassword123") {
+        if (email !== "modelNet@gmail.com" || password !== "ModelNet512") {
             throw new ApiError("Authentication Failed", 401, "Invalid email or password.");
         }
         console.log("Sign-in successful for email:");

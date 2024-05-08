@@ -40,14 +40,7 @@ const userSchema = new mongoose.Schema(
       type: Number,
     },
 
-    profilePicture: {
-      type: String,
-      default: "default.jpg",
-    },
-    // image: {
-    //   type: String, // Store base64 string here
-    //    // This field is not mandatory
-    // }
+    
   },
 
   {

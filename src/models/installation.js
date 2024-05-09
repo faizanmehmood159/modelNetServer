@@ -33,6 +33,23 @@ const installationSchema = new mongoose.Schema({
     type: String,
     default: "pending",
   },
+  packages: {
+    type: {
+      id: {
+        type: Number,
+        required: true
+      },
+      label: {
+        type: String,
+        required: true
+      },
+      price: {
+        type: Number,
+        required: true
+      }
+    },
+    required: true
+  }
   
 }, { timestamps: true });
 

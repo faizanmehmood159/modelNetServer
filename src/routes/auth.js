@@ -24,6 +24,7 @@ import processPayment from "../controllers/auth/paymentController.js";
 import uploadProfile from "../controllers/auth/uploadProfile.js";
 import getprofileImage from "../controllers/auth/getprofileImage.js";
 
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const router = express.Router();
@@ -50,9 +51,6 @@ router.post("/sendOtp", sendOtp);
 router.post('/payment', tokenAuthorization, processPayment);
 router.post('/upload', upload.single('image'), tokenAuthorization, uploadProfile);
 router.get("/profileImage/:profileId", tokenAuthorization, getprofileImage);
-
-
-
 
 
 export default router;

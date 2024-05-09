@@ -21,10 +21,11 @@ import getLoggedInUserName from '../controllers/auth/getLoggedInUserName.js'
 import forgetPassword from "../controllers/auth/forgetPassword.js";
 import sendOtp from "../controllers/auth/sendOtp.js";
 import processPayment from "../controllers/auth/paymentController.js";
-import imageController from '../controllers/auth/imageController.js';
+import uploadProfile from "../controllers/auth/uploadProfile.js";
+import getprofileImage from "../controllers/auth/getprofileImage.js";
 
-
-
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 const router = express.Router();
 
 
@@ -47,7 +48,8 @@ router.put("/editUser", editUser)
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName)
 router.post("/sendOtp", sendOtp);
 router.post('/payment', tokenAuthorization, processPayment);
-router.post('/upload', imageController.uploadImage);
+router.post('/upload', upload.single('image'), tokenAuthorization, uploadProfile);
+router.get("/profileImage/:profileId", tokenAuthorization, getprofileImage);
 
 
 

@@ -1,5 +1,5 @@
-import Installation from '../models/installation.js';
-import sendFinalResponse from "../utils/sendFinalResponse.js";
+import Installation from '../../../models/installation.js';
+import sendFinalResponse from "../../../utils/sendFinalResponse.js";
 
 const installationForm = async (req, res, next) => { // Add 'next' as a parameter
   try {

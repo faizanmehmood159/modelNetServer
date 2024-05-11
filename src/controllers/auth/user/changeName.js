@@ -1,7 +1,7 @@
 // controllers/auth/changeName.js
 // import user from '../../models/user.js';
-import sendFinalResponse from '../../utils/sendFinalResponse.js';
-import { ApiError } from '../../utils/apiErrors.js';
+import sendFinalResponse from '../../../utils/sendFinalResponse.js';
+import { ApiError } from '../../../utils/apiErrors.js';
 
 const changeName = async (req, res, next) => {
     try {

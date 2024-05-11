@@ -46,6 +46,10 @@ const installationSchema = new mongoose.Schema({
       price: {
         type: Number,
         required: true
+      },
+      status:{
+        type: String,
+        default:"Pending"
       }
     },
     required: true

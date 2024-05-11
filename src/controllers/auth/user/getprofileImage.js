@@ -1,4 +1,4 @@
-import Profile from '../../models/image.js';
+import Profile from '../../../models/image.js';
 
 const getProfileImage = async (req, res) => {
   try {

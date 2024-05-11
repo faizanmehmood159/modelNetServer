@@ -5,7 +5,7 @@ const getAllUsers = async (req, res, next) => {
   try {
     
     const users = await User.find();
-    console.log(users);
+    // console.log(users);
     
     return sendFinalResponse(res, 200, true, "Users retrieved successfully", { users });
   } catch (error) {

@@ -1,8 +1,8 @@
-import User from "../../models/user.js";
+import User from "../../../models/user.js";
 import bcrypt from "bcryptjs";
-import sendFinalResponse from "../../utils/sendFinalResponse.js";
-import { ApiError } from "../../utils/apiErrors.js";
-import passwordValidation from "../../utils/passwordValidation.js";
+import sendFinalResponse from "../../../utils/sendFinalResponse.js";
+import { ApiError } from "../../../utils/apiErrors.js";
+import passwordValidation from "../../../utils/passwordValidation.js";
 
 const changePassword = async (req, res, next) => {
     try {

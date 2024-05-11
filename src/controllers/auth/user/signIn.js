@@ -1,9 +1,9 @@
 // controllers/auth/signin.js
 
-import User from "../../models/user.js";
+import User from "../../../models/user.js";
 import bcrypt from "bcryptjs";
-import sendFinalResponse from "../../utils/sendFinalResponse.js";
-import { ApiError } from "../../utils/apiErrors.js";
+import sendFinalResponse from "../../../utils/sendFinalResponse.js";
+import { ApiError } from "../../../utils/apiErrors.js";
 
 const signIn = async (req, res, next) => {
   try {

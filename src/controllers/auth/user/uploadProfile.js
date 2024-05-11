@@ -1,6 +1,6 @@
 // uploadRoutes.js
 
-import Image from '../../models/image.js'; // Change from Profile to Image
+import Image from '../../../models/image.js'; // Change from Profile to Image
 
 const uploadProfile = async (req, res) => {
   try {

@@ -1,8 +1,8 @@
-import sendFinalResponse from "../../utils/sendFinalResponse.js";
-import { ApiError } from "../../utils/apiErrors.js";
-import otpGenerator from "../../utils/otpGenerator.js";
-import User from "../../models/user.js";
-import sendEmail from "../../config/sendEmail.js";
+import sendFinalResponse from "../../../utils/sendFinalResponse.js";
+import { ApiError } from "../../../utils/apiErrors.js";
+import otpGenerator from "../../../utils/otpGenerator.js";
+import User from "../../../models/user.js";
+import sendEmail from "../../../config/sendEmail.js";
 
 const sendOtp = async (req, res, next) => {
   try {

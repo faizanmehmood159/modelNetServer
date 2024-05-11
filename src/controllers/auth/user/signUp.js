@@ -1,10 +1,10 @@
 //src/controllers/auth/signUp.js
 
-import User from "../../models/user.js";
-import sendFinalResponse from "../../utils/sendFinalResponse.js";
-import { ApiError } from "../../utils/apiErrors.js";
-import passwordValidation from "../../utils/passwordValidation.js";
-import { EMAIL_REGEX } from "../../constants/regex.js";
+import User from "../../../models/user.js";
+import sendFinalResponse from "../../../utils/sendFinalResponse.js";
+import { ApiError } from "../../../utils/apiErrors.js";
+import passwordValidation from "../../../utils/passwordValidation.js";
+import { EMAIL_REGEX } from "../../../constants/regex.js";
 
 const signUp = async (req, res, next) => {
     try {

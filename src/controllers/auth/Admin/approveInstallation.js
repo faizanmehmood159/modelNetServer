@@ -43,15 +43,6 @@ const approveInstallation = async (req, res, next) => {
       );
     }
 
-    // Notify the user about the status update via email
-    // const emailSubject = status === "approved" ? "Installation Form Approved" :
-    //                     status === "reject" ? "Installation Form Rejected" : "Installation Form Pending";
-    // const emailMessage = `Your installation form with ID ${installationFormId} has been ${status === "reject" ? "rejected" : status}.`;
-
-    // // Assuming updatedForm contains user's email address
-    // await sendEmail(updatedForm.email, emailSubject, emailMessage);
-
-    // Send a success response
     sendFinalResponse(
       res,
       200,

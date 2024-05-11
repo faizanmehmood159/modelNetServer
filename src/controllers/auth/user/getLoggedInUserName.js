@@ -1,5 +1,5 @@
-import User from "../../models/user.js"; // Ensure correct path to user model
-import sendFinalResponse from "../../utils/sendFinalResponse.js";
+import User from "../../../models/user.js"; // Ensure correct path to user model
+import sendFinalResponse from "../../../utils/sendFinalResponse.js";
 
 const getLoggedInUserName = async (req, res, next) => {
   try {

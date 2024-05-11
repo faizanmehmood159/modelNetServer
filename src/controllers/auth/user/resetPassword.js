@@ -1,9 +1,9 @@
 // controllers/auth/resetPassword.js
 
 import bcrypt from 'bcryptjs';
-import User from '../../models/user.js';
-import { generateOTP, sendOTP } from '../../utils/otpUtils.js'; 
-import sendFinalResponse from '../../utils/sendFinalResponse.js';
+import User from '../../../models/user.js';
+import { generateOTP, sendOTP } from '../../../utils/otpUtils.js'; 
+import sendFinalResponse from '../../../utils/sendFinalResponse.js';
 
 
 const resetPassword = async (req, res, next) => {

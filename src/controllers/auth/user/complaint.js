@@ -1,5 +1,5 @@
-import Complaint from "../models/complaint.js"; // Ensure correct path to complaint model
-import sendFinalResponse from "../utils/sendFinalResponse.js";
+import Complaint from "../../../models/complaint.js"; // Ensure correct path to complaint model
+import sendFinalResponse from "../../../utils/sendFinalResponse.js";
 
 const registerComplaint = async (req, res, next) => {
   try {

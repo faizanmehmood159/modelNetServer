@@ -20,16 +20,17 @@ import multer from "multer";
 import getLoggedInUserName from '../controllers/auth/user/getLoggedInUserName.js'
 import forgetPassword from "../controllers/auth/user/forgetPassword.js";
 import sendOtp from "../controllers/auth/user/sendOtp.js";
-import uploadProfile from "../controllers/auth/user/uploadProfile.js";
 import getprofileImage from "../controllers/auth/user/getprofileImage.js";
 import approveBill from '../controllers/auth/Admin/approveBill.js'
 import packagesfetch from "../controllers/auth/user/packagesfetch.js"
 import confirmPayment  from "../controllers/auth/user/confirmPayment .js"
-
+import uploadProfileImage from "../controllers/auth/user/upload.js";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const router = express.Router();
+router.use(express.urlencoded({ extended: false }));
+
 
 
 //User side
@@ -45,7 +46,7 @@ router.use("/registerComplaint", tokenAuthorization, registerComplaint);
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName);
 router.get('/getBill/',tokenAuthorization, packagesfetch);
 router.post("/confirmPayment", tokenAuthorization, confirmPayment )
-
+router.post('/upload',tokenAuthorization, uploadProfileImage);
 
 
 
@@ -58,8 +59,6 @@ router.use("/approveInstallation", approveInstallation )
 router.post("/deleteUser", deleteUser)
 router.put("/editUser", editUser)
 router.post("/sendOtp", sendOtp);
-// router.post('/payment', tokenAuthorization, processPayment);
-router.post('/upload', upload.single('image'), tokenAuthorization, uploadProfile);
 router.get("/profileImage/:profileId", tokenAuthorization, getprofileImage);
 router.put("/bills", approveBill);
 

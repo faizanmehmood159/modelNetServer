@@ -1,33 +1,23 @@
-// payment.js
-
+// models/paidBill.js
 import mongoose from 'mongoose';
 
-const paymentSchema = new mongoose.Schema({
-  installationId: {
+const paidBillSchema = new mongoose.Schema({
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Installation', // Reference to the Installation model
+    ref: 'User', // Reference to the User model
     required: true
   },
-  billId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Bill', // Reference to the Bill model if applicable
+  packages: {
+    type: [String],
+    required: true
+  },
+  someStringData: {
+    type: String,
     required: true
   },
   
-  method: {
-    type: String,
-    required: true
-  },
-  status: {
-    type: String,
-    default: 'successful' // Default status is 'successful'
-  },
-  timestamp: {
-    type: Date,
-    default: Date.now
-  }
-});
+}, { timestamps: true });
 
-const Payment = mongoose.model('Payment', paymentSchema);
+const PaidBill = mongoose.model('PaidBill', paidBillSchema);
 
-export default Payment;
+export default PaidBill;

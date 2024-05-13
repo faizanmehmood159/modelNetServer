@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema(
     profileImage: {
       type: String, 
     },
+    uploadedAt: { 
+      type: Date, 
+      default: Date.now 
+    },
     
   },
 

@@ -25,10 +25,7 @@ const billSchema = new mongoose.Schema({
     },
     required: true
   },
-  status:{
-    type: String,
-    default: "pending" 
-  }
+  
 });
 
 const Bill = mongoose.model('Bill', billSchema);

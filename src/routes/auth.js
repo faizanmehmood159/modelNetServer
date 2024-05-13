@@ -20,14 +20,15 @@ import multer from "multer";
 import getLoggedInUserName from '../controllers/auth/user/getLoggedInUserName.js'
 import forgetPassword from "../controllers/auth/user/forgetPassword.js";
 import sendOtp from "../controllers/auth/user/sendOtp.js";
-import getprofileImage from "../controllers/auth/user/getprofileImage.js";
-import approveBill from '../controllers/auth/Admin/approveBill.js'
 import packagesfetch from "../controllers/auth/user/packagesfetch.js"
 import confirmPayment  from "../controllers/auth/user/confirmPayment .js"
-import uploadProfileImage from "../controllers/auth/user/upload.js";
+import uploadImage from "../controllers/auth/user/uploadImage.js";
+import upload from "../middleware/uploadMiddleware.js"
+import getImage from "../controllers/auth/user/getImage.js"
+import getAllBills from "../controllers/auth/Admin/getAllBills.js"
+import approveBill from "../controllers/auth/Admin/approveBills.js"
+import getBills from "../controllers/auth/user/getBills.js";
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
 const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
 
@@ -44,9 +45,11 @@ router.post("/sendOTPForReset", sendOTPForReset);
 router.use("/installationForm",tokenAuthorization , installationForm);
 router.use("/registerComplaint", tokenAuthorization, registerComplaint);
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName);
-router.get('/getBill/',tokenAuthorization, packagesfetch);
-router.post("/confirmPayment", tokenAuthorization, confirmPayment )
-router.post('/upload',tokenAuthorization, uploadProfileImage);
+router.get('/getBill/',tokenAuthorization, packagesfetch);  
+router.post("/confirmPayment", tokenAuthorization, confirmPayment );
+router.post('/upload', upload.single('profileImage'), tokenAuthorization, uploadImage);
+router.get('/getImage', tokenAuthorization, getImage);
+router.get("/allBills",tokenAuthorization, getBills)
 
 
 
@@ -59,7 +62,10 @@ router.use("/approveInstallation", approveInstallation )
 router.post("/deleteUser", deleteUser)
 router.put("/editUser", editUser)
 router.post("/sendOtp", sendOtp);
-router.get("/profileImage/:profileId", tokenAuthorization, getprofileImage);
 router.put("/bills", approveBill);
+router.get("/getAllBills", getAllBills);
+router.put("/bills", approveBill);
+
+
 
 export default router;

@@ -1,4 +1,4 @@
-  //E:\React Native\Fyp\modelNetServer\index.js
+
   import app from "./src/middleware/appRouteMiddlewares.js";
   import ENV from "./src/config/keys.js";
   import DB from "./src/config/db.js";
@@ -8,7 +8,6 @@
   app.use("/api/v1/", AppRoutes);
 
 
-  // error handler
   app.use((err, req, res, next) => {
     console.error(err.stack);
     if (!errorHandler.isTrustedError(err)) {

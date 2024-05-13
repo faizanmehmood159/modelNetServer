@@ -26,7 +26,6 @@ const HttpStatusCode = {
     },
   };
   
-  // Merge the properties of OtpTypes with the existing declaration
   const OtpTypes = Object.freeze({
     ...{
       ForgetPasswordEmail: "forgetPasswordEmail",

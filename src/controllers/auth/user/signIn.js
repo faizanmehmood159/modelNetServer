@@ -9,7 +9,6 @@ const signIn = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
-    // Check if both email and password are provided
     if (!email || !password) {
       throw new ApiError(
         "Invalid Request",
@@ -18,18 +17,15 @@ const signIn = async (req, res, next) => {
       );
     }
 
-    // Normalize email
+   
     const normalizedEmail = email.toLowerCase();
 
-    // Find user by email
     const user = await User.findOne({ email: normalizedEmail });
 
-    // Check if user exists
     if (!user) {
       throw new ApiError("Authentication Failed", 401, "Email not found.");
     }
 
-    // Compare passwords
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
@@ -40,11 +36,9 @@ const signIn = async (req, res, next) => {
       );
     }
 
-    // Generate JWT
+   
     const token = await user.generateAuthToken();
-    // Adjust token expiration time as needed
-
-    // Respond with success and include the JWT in the response
+   
     return sendFinalResponse(res, 200, true, "Signed in successfully", {
       token,
       email: user.email,

@@ -2,7 +2,7 @@
 import PaidBill from "../../../models/PaidBills.js";
 import sendFinalResponse from "../../../utils/sendFinalResponse.js";
 
-const approveBills = async (req, res, next) => {
+const   approveBills = async (req, res, next) => {
     try {
       const { billId, status } = req.body;
   

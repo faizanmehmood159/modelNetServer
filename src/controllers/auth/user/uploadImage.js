@@ -1,26 +1,28 @@
-import Image from "../../../models/image.js";
+// src/controllers/userController.js
+import User from "../../../models/user.js";
 
+// Controller to handle image upload
 const uploadImage = async (req, res) => {
-    try {
-        const userId = req.query.userId;
-        
-        if (!userId) {
-            return res.status(400).json({ error: 'User ID is required' });
-        }
-        
-        const image = new Image({
-            user: userId, 
-            imageUrl: req.file.path         });
+  try {
+    const { userId} = req.body;
 
-        // Save the image data
-        await image.save();
-
-        // Respond with success message
-        res.json({ message: 'Profile image uploaded successfully', image });
-    } catch (error) {
-        console.error('Error uploading profile image:', error);
-        res.status(500).json({ error: 'Internal server error' });
+    // Find the user by userId or create a new one
+    let user = await User.findOne({ userId });
+    if (!user) {
+      user = new User({ userId });
     }
-};
+
+    // Update the user's image data
+    user.profileImage = "string"
+
+    // Save the user to the database
+    await user.save();
+
+    res.status(200).send('Image uploaded successfully');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+}
 
 export default uploadImage;

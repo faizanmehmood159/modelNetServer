@@ -22,12 +22,13 @@ import forgetPassword from "../controllers/auth/user/forgetPassword.js";
 import sendOtp from "../controllers/auth/user/sendOtp.js";
 import packagesfetch from "../controllers/auth/user/packagesfetch.js"
 import confirmPayment  from "../controllers/auth/user/confirmPayment .js"
-import uploadImage from "../controllers/auth/user/uploadImage.js";
-import upload from "../middleware/uploadMiddleware.js"
+// import upload from "../middleware/uploadMiddleware.js"
 import getImage from "../controllers/auth/user/getImage.js"
 import getAllBills from "../controllers/auth/Admin/getAllBills.js"
 import approveBill from "../controllers/auth/Admin/approveBills.js"
 import getBills from "../controllers/auth/user/getBills.js";
+import uploadImage from "../controllers/auth/user/uploadImage.js"
+
 
 const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
@@ -47,9 +48,9 @@ router.use("/registerComplaint", tokenAuthorization, registerComplaint);
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName);
 router.get('/getBill/',tokenAuthorization, packagesfetch);  
 router.post("/confirmPayment", tokenAuthorization, confirmPayment );
-router.post('/upload', upload.single('profileImage'), tokenAuthorization, uploadImage);
 router.get('/getImage', tokenAuthorization, getImage);
 router.get("/allBills",tokenAuthorization, getBills)
+router.post('/upload', uploadImage);
 
 
 

@@ -27,6 +27,7 @@ import confirmPayment  from "../controllers/auth/user/confirmPayment .js"
 import getBills from "../controllers/auth/user/getBills.js";
 import uploadProfileImage from "../controllers/auth/user/uploadProfileImage.js";
 import getProfileImage from "../controllers/auth/user/getProfileImag.js";
+import verifyEmail from "../controllers/auth/user/verifyEmail.js";
 
 const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
@@ -48,9 +49,8 @@ router.get('/getBill/',tokenAuthorization, packagesfetch);
 router.post("/confirmPayment", tokenAuthorization, confirmPayment );
 router.get("/allBills",tokenAuthorization, getBills)
 router.post("/uploadProfileImage", tokenAuthorization, uploadProfileImage);
-router.get("/getProfileImage", tokenAuthorization, getProfileImage);
-
-
+router.get("/getProfileImage", tokenAuthorization, getProfileImage)
+router.get("/verify/:token", verifyEmail);
 
 
 

@@ -1,12 +1,9 @@
-import ENV from "./keys.js";
 import sendGrid from "@sendgrid/mail";
+import ENV from "./keys.js";
+
 sendGrid.setApiKey(ENV.SENDGRID_API_KEY);
 
-const sendEmail = (email, otp) => {
-  // console.log(email, otp);
-  // if (otpString.length == 6) {
-  //   otp = "Hello, your OTP is " + otp + "  Do not share it with anyone else!";
-  // }
+const sendEmail = (email, content) => {
   const msg = {
     to: email,
     from: {
@@ -14,10 +11,12 @@ const sendEmail = (email, otp) => {
       email: "possbly@comtechradix.com",
     },
     subject: "ModelNet",
-    html: otp,
+    html: content,
     text: "ModelNet Notifications",
   };
   return sendGrid.send(msg);
 };
 
-export default sendEmail;
+
+
+export default  sendEmail ;

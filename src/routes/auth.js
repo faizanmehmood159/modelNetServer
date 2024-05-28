@@ -1,34 +1,32 @@
 // E:\React Native\Fyp\modelNetServer\src\routes\auth.js
 
 import express from "express";
+import adminSignIn from '../controllers/auth/Admin/adminSignIn.js';
+import stats from "../controllers/auth/Admin/stats.js";
+import resolveComplaint from "../controllers/auth/Admin/resolveComplaint.js";
+import approveInstallation from "../controllers/auth/Admin/approveInstallation.js";
+import deleteUser from "../controllers/auth/Admin/deleteUser.js";
+import editUser from "../controllers/auth/Admin/editUser.js";
+import getAllBills from "../controllers/auth/Admin/getAllBills.js"
+import approveBill from "../controllers/auth/Admin/approveBills.js"
+import  tokenAuthorization  from "../middleware/tokenAuthorization.js";
+
 import signUp from "../controllers/auth/user/signUp.js";
 import signIn from "../controllers/auth/user/signIn.js";
 import resetPassword from '../controllers/auth/user/resetPassword.js';
 import { sendOTPForReset } from '../controllers/auth/user/resetPassword.js';
-import adminSignIn from '../controllers/auth/Admin/adminSignIn.js';
-import  tokenAuthorization  from "../middleware/tokenAuthorization.js";
-import stats from "../controllers/auth/Admin/stats.js";
 import registerComplaint from "../controllers/auth/user/complaint.js";
 import installationForm from "../controllers/auth/user/installationForm.js";
-import resolveComplaint from "../controllers/auth/Admin/resolveComplaint.js";
-import approveInstallation from "../controllers/auth/Admin/approveInstallation.js";
-import deleteUser from "../controllers/auth/Admin/deleteUser.js";
 import changePassword from "../controllers/auth/user/changePassword.js";
-import editUser from "../controllers/auth/Admin/editUser.js";
 import changeName from "../controllers/auth/user/changeName.js";
-import multer from "multer";
 import getLoggedInUserName from '../controllers/auth/user/getLoggedInUserName.js'
 import forgetPassword from "../controllers/auth/user/forgetPassword.js";
 import sendOtp from "../controllers/auth/user/sendOtp.js";
 import packagesfetch from "../controllers/auth/user/packagesfetch.js"
 import confirmPayment  from "../controllers/auth/user/confirmPayment .js"
-// import upload from "../middleware/uploadMiddleware.js"
-import getImage from "../controllers/auth/user/getImage.js"
-import getAllBills from "../controllers/auth/Admin/getAllBills.js"
-import approveBill from "../controllers/auth/Admin/approveBills.js"
 import getBills from "../controllers/auth/user/getBills.js";
-import uploadImage from "../controllers/auth/user/uploadImage.js"
-
+import uploadProfileImage from "../controllers/auth/user/uploadProfileImage.js";
+import getProfileImage from "../controllers/auth/user/getProfileImag.js";
 
 const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
@@ -48,9 +46,10 @@ router.use("/registerComplaint", tokenAuthorization, registerComplaint);
 router.get("/getLoggedInUserName", tokenAuthorization, getLoggedInUserName);
 router.get('/getBill/',tokenAuthorization, packagesfetch);  
 router.post("/confirmPayment", tokenAuthorization, confirmPayment );
-router.get('/getImage', tokenAuthorization, getImage);
 router.get("/allBills",tokenAuthorization, getBills)
-router.post('/upload', uploadImage);
+router.post("/uploadProfileImage", tokenAuthorization, uploadProfileImage);
+router.get("/getProfileImage", tokenAuthorization, getProfileImage);
+
 
 
 

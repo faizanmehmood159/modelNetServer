@@ -35,13 +35,17 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    verified: {
+      type: Boolean,
+      default: false,
+    },
     otp: {
       type: Number,
     },
     profileImage: {
-      type: String, 
+      type: String,
     },
+    
     uploadedAt: { 
       type: Date, 
       default: Date.now 

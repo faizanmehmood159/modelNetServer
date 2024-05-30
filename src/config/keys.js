@@ -5,9 +5,9 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 dotenv.config({ path: "./.env.local" });
 
 const config = {
-  PORT: process.env.PORT || 8000,
+  PORT: process.env.PORT,
   DATABASE: {
-    URL: process.env.MONGODB_URL,
+    // URL: process.env.MONGODB_URL,
   },
   JWT_SECRET: process.env.JWT_SECRET,
   SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,

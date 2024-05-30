@@ -5,8 +5,8 @@ import ENV from "./keys.js";
 const DB = async () => {
   try {
     mongoose.set("strictQuery", false);
-
-    await mongoose.connect(ENV.DATABASE.URL);
+    
+    await mongoose.connect(process.env.MONGODB_URL);
     console.log("MongoDB Connected...");
   } catch (error) {
     console.log(`${error.message}`);

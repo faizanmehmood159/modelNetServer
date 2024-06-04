@@ -2,7 +2,6 @@
 
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 // const BUSINESS_NAME_REGEX = /^[a-zA-Z '.-]+$/;
-const PHONE_NUMBER_REGEX = /(^|\+92|\(\+92\))(03\d{2}|3\d{2})\d{7}$/;
 const REGNO_REGEX = /^\d[0-9]+$/;
 const REGEX_INTEGER = /^[+-]?\d+$/;
 
